@@ -1,4 +1,4 @@
-<%= form_with(model: company) do |form| %>
+<%= form_with(model: company, data: { controller: "company-autocomplete" }) do |form| %>
   <% if company.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
@@ -13,7 +13,15 @@
 
   <div>
     <%= form.label :info, style: "display: block" %>
-    <%= form.text_area :info %>
+    <%= form.text_area :info, readonly: true, rows: 5, data: { company_autocomplete_target: "paste" } %>
+  </div>
+
+  <div>
+    <%= form.label :search, style: "display: block" %>
+    <%= form.text_field :search, data: { controller: "company-search", action: "input->company-search#search" } %>
+  </div>
+
+  <div id="results" data-company-autocomplete-target="results">
   </div>
 
   <div>

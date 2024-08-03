@@ -6,6 +6,11 @@ class CompaniesController < ApplicationController
     @companies = Company.all
   end
 
+  def search
+    query = params[:query]
+    @results = Company.search_fr(query)
+  end
+
   # GET /companies/1 or /companies/1.json
   def show
   end
