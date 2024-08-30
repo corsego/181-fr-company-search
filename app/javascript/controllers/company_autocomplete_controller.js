@@ -6,7 +6,8 @@ export default class extends Controller {
 
   paste(e) {
     console.log(e.target.innerText)
-    this.pasteTarget.value = e.target.innerText
+    // this.pasteTarget.value = e.target.innerText
+    this.pasteTarget.value = e.target.dataset.companyid
     this.resultsTarget.innerHTML = ""
   }
 }

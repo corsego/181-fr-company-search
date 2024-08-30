@@ -1,4 +1,4 @@
-<%= form_with(model: company, data: { controller: "company-autocomplete" }) do |form| %>
+<%= form_with(model: company, data: { controller: "company-autocomplete showifvalue" }) do |form| %>
   <% if company.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
@@ -17,8 +17,18 @@
   </div>
 
   <div>
-    <%= form.label :search, style: "display: block" %>
-    <%= form.text_field :search, data: { controller: "company-search", action: "input->company-search#search" } %>
+    <%= form.label :country_code, style: "display: block" %>
+    <%= form.select :country_code, ["FR", "UK"], {include_blank: true}, data: { showifvalue_target: "input", action: "change->showifvalue#toggle" } %>
+  </div>
+
+  <div data-showifvalue-target="output" data-showif-value="FR">
+    <%= form.label :search_fr, style: "display: block" %>
+    <%= form.text_field :search_fr, data: { country: "FR", controller: "company-search", action: "input->company-search#search" } %>
+  </div>
+
+  <div data-showifvalue-target="output" data-showif-value="UK">
+    <%= form.label :search_uk, style: "display: block" %>
+    <%= form.text_field :search_uk, data: { country: "UK", controller: "company-search", action: "input->company-search#search" } %>
   </div>
 
   <div id="results" data-company-autocomplete-target="results">

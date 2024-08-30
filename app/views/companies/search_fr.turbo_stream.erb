@@ -1,0 +1,9 @@
+<%= turbo_stream.update :results do %>
+  <% @results["results"].each do |result| %>
+    <div data-action="click->company-autocomplete#paste" data-companyid="<%= result["siren"] %>" style="border: 1px solid black; margin: 10px; padding: 10px;">
+      <%= result["siren"] %>
+      <%= result["nom_complet"] %>
+      <%= result["siege"]["adresse"] %>
+    </div>
+  <% end %>
+<% end %>

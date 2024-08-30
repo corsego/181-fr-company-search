@@ -8,8 +8,14 @@ class CompaniesController < ApplicationController
 
   def search
     query = params[:query]
-    @results = Company.search_uk(query)
-    # @results = Company.search_fr(query)
+    country = params[:country]
+    if country == "FR"
+      @results = Company.search_fr(query)
+      render template: 'companies/search_fr'
+    elsif country = "UK"
+      @results = Company.search_uk(query)
+      render template: 'companies/search_uk'
+    end
   end
 
   # GET /companies/1 or /companies/1.json
@@ -71,6 +77,6 @@ class CompaniesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def company_params
-      params.require(:company).permit(:info)
+      params.require(:company).permit(:info, :country_code)
     end
 end

@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_03_165235) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_30_151713) do
   create_table "companies", force: :cascade do |t|
     t.text "info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "country_code"
   end
 
 end
