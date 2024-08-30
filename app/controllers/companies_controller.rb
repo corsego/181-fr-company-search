@@ -8,7 +8,8 @@ class CompaniesController < ApplicationController
 
   def search
     query = params[:query]
-    @results = Company.search_fr(query)
+    @results = Company.search_uk(query)
+    # @results = Company.search_fr(query)
   end
 
   # GET /companies/1 or /companies/1.json
