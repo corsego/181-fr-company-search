@@ -12,8 +12,8 @@
   <% end %>
 
   <div>
-    <%= form.label :info, style: "display: block" %>
-    <%= form.text_area :info, readonly: true, rows: 5, data: { company_autocomplete_target: "paste" } %>
+    <%= form.label :registration_number, style: "display: block" %>
+    <%= form.text_area :registration_number, readonly: true, rows: 5, data: { company_autocomplete_target: "paste" } %>
   </div>
 
   <div>
@@ -23,12 +23,12 @@
 
   <div data-showifvalue-target="output" data-showif-value="FR">
     <%= form.label :search_fr, style: "display: block" %>
-    <%= form.text_field :search_fr, data: { country: "FR", controller: "company-search", action: "input->company-search#search" } %>
+    <%= form.search_field :search_fr, autocomplete: "off", autocorrect: "off", data: { country: "FR", controller: "company-search", action: "input->company-search#search" } %>
   </div>
 
   <div data-showifvalue-target="output" data-showif-value="UK">
     <%= form.label :search_uk, style: "display: block" %>
-    <%= form.text_field :search_uk, data: { country: "UK", controller: "company-search", action: "input->company-search#search" } %>
+    <%= form.search_field :search_uk, autocomplete: "off", autocorrect: "off", data: { country: "UK", controller: "company-search", action: "input->company-search#search" } %>
   </div>
 
   <div id="results" data-company-autocomplete-target="results">

@@ -1,11 +1,20 @@
 <div id="<%= dom_id company %>">
   <p>
-    <strong>Info:</strong>
-    <%= company.info %>
+    <strong>registration_number:</strong>
+    <%#= JSON.parse(company.registration_number.gsub("=>", ":"))["nom_complet"] %>
+    <%= company.registration_number %>
   </p>
   <p>
     <strong>Country code:</strong>
     <%= company.country_code %>
   </p>
-
+  <p>
+    <strong>payload:</strong>
+    <% company.payload&.each do |k, v| %>
+      <div>
+        <b><%= k %>:</b>
+        <%= v %>
+      </div>
+    <% end %>
+  </p>
 </div>

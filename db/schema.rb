@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_30_151713) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_01_121344) do
   create_table "companies", force: :cascade do |t|
-    t.text "info"
+    t.text "registration_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "country_code"
+    t.json "payload"
   end
 
 end
